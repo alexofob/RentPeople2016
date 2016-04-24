@@ -1,0 +1,21 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "ROOT_URL": "https://www.rentpeople.space",
+      "MONGO_URL": "mongodb://rentpeopleweb:B3lieve@ds021999.mlab.com:21999/rentpeople",
+      "MONGO_OPLOG_URL": "..."
+      }
+  }
+  "private": {
+    "oAuth": {
+      "facebook": {
+        "appId": "1691342114448637",
+        "secret": "1715acfe6ab2f125a96396c645fb3d83"
+      },
+      "google": {
+        "clientId": "671509141517-rg0lgq5rkv3r9gfslh74b1bmurtkespu.apps.googleusercontent.com",
+        "secret": "BZn_DofKqMwHfOP44LCOnmgP"
+      }
+    }
+  }
+}

@@ -20,4 +20,7 @@ fourseven:scss
 ddp-rate-limiter
 underscore
 blaze-html-templates
-kadira:flow-router
+accounts-password
+accounts-facebook
+service-configuration
+react-meteor-data

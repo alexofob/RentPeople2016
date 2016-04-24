@@ -1,17 +1,21 @@
-import React from 'react';
-import Header from '/imports/ui/components/header.jsx';
+import React, { PropTypes } from 'react';
+import Header from '/imports/ui/containers/header/header';
 import Footer from '/imports/ui/components/footer.jsx';
 
-const MainLayout = ({ content = () => null }) => (
+const MainLayout = ({ children }) => (
   <div>
     <Header />
 
     <div className="flex-container">
-      { content() }
+      { children }
     </div>
 
     <Footer />
   </div>
 );
+
+MainLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default MainLayout;

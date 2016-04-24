@@ -6,14 +6,27 @@
     "pretest": "npm run lint --silent"
   },
   "dependencies": {
+    "eslint": "^2.8.0",
+    "formsy-material-ui": "^0.3.8",
+    "formsy-react": "^0.17.0",
     "material-ui": "^0.14.4",
     "meteor-node-stubs": "~0.2.0",
-    "react": "^0.14.8",
-    "react-dom": "^0.14.8",
+    "react": "^15.0.1",
+    "react-addons-pure-render-mixin": "^15.0.1",
+    "react-dom": "^15.0.1",
     "react-mounter": "^1.2.0",
-    "react-tap-event-plugin": "^0.2.2"
+    "react-redux": "^4.4.5",
+    "react-router": "^2.3.0",
+    "react-tap-event-plugin": "^0.2.2",
+    "redux": "^3.4.0",
+    "redux-batched-actions": "^0.1.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.0.1",
+    "simple-react-redux": "git+https://github.com/AdamBrodzinski/simple-redux-react.git"
   },
   "devDependencies": {
+    "babel-cli": "^6.7.7",
+    "babel-eslint": "^6.0.3",
     "eslint": "^2.6.0",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-meteor": "^3.4.0",
