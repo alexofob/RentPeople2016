@@ -18,7 +18,7 @@ const SignUp = ({ onFacebookSignUp, onSubmitSignUp, onLoginClick }) => (
       <span>or</span>
     </div>
 
-    <Form onValidSubmit={onSubmitSignUp}>
+    <Form onValidSubmit={(data) => onSubmitSignUp(data)}>
 
       <FormsyText
         name="firstname"
@@ -62,18 +62,18 @@ const SignUp = ({ onFacebookSignUp, onSubmitSignUp, onLoginClick }) => (
       />
 
       <div className="login-item">
-          <RaisedButton
-            type="submit"
-            primary
-            label="SIGN UP"
-          />
+        <RaisedButton
+          type="submit"
+          primary
+          label="SIGN UP"
+        />
 
       </div>
 
       <p className="login-item">
         <small>
-          By clicking Sign up, you agree to our <a href="#">Privacy Policy</a>
-          and <a href="#">Terms of Use</a>
+          By clicking Sign up, you agree to our <a href="#">Privacy Policy </a> and
+          <a href="#"> Terms of Use</a>
         </small>
       </p>
 
@@ -84,7 +84,7 @@ const SignUp = ({ onFacebookSignUp, onSubmitSignUp, onLoginClick }) => (
       <div className="login-item">
         <small>
           If you already have an account,
-          <a href="#" onClick={onLoginClick}>Log in</a>
+          <a href="#" onClick={onLoginClick}> Log in</a>
         </small>
       </div>
     </Form>

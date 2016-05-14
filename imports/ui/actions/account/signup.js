@@ -1,5 +1,7 @@
-import { Accounts } from 'meteor/meteor';
+/* eslint "import/no-unresolved": [ 2, { "ignore": ["^meteor/"] }] */
+import { Accounts } from 'meteor/accounts-base';
 import { setSnackbarMessage, openSnackbar, closeDialog, setDialogContent } from '../header';
+import { batchActions } from 'redux-batched-actions';
 
 export function submitSignUp(data) {
   return (dispatch) => {
@@ -7,8 +9,10 @@ export function submitSignUp(data) {
 
     const accountObject = {
       profile: {
-        firstName: firstname,
-        lastName: surname,
+        name: {
+          firstName: firstname,
+          lastName: surname,
+        },
       },
       email,
       password,
@@ -16,9 +20,10 @@ export function submitSignUp(data) {
 
     Accounts.createUser(accountObject, (err) => {
       if (err && err.reason) {
-        return dispatch([setSnackbarMessage(err.reason), openSnackbar]);
+        return dispatch(batchActions([setSnackbarMessage(err.reason), openSnackbar()]));
       }
-      return dispatch([setSnackbarMessage('Signup Successful'), openSnackbar, closeDialog]);
+      return dispatch(batchActions([setSnackbarMessage('Signup Successful'),
+        openSnackbar(), closeDialog()]));
     });
   };
 }

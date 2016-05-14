@@ -1,13 +1,16 @@
+/* eslint "import/no-unresolved": [ 2, { "ignore": ["^meteor/"] }] */
 import { Meteor } from 'meteor/meteor';
 import { setSnackbarMessage, openSnackbar, closeDialog, setDialogContent } from '../header';
+import { batchActions } from 'redux-batched-actions';
 
 export function submitLogin(data) {
   return (dispatch) => {
     Meteor.loginWithPassword(data.email, data.password, (err) => {
       if (err && err.reason) {
-        return dispatch([setSnackbarMessage(err.reason), openSnackbar]);
+        return dispatch(batchActions([setSnackbarMessage(err.reason), openSnackbar()]));
       }
-      return dispatch([setSnackbarMessage('Login Successful'), openSnackbar, closeDialog]);
+      return dispatch(batchActions([setSnackbarMessage('Login Successful'),
+        openSnackbar(), closeDialog()]));
     });
   };
 }
@@ -19,9 +22,10 @@ export function facebookLogin() {
     };
     Meteor.loginWithFacebook(options, (err) => {
       if (err) {
-        return dispatch([setSnackbarMessage(err.reason), openSnackbar]);
+        return dispatch(batchActions([setSnackbarMessage(err.reason), openSnackbar()]));
       }
-      return dispatch([setSnackbarMessage('Login Successful'), openSnackbar, closeDialog]);
+      return dispatch(batchActions([setSnackbarMessage('Login Successful'), openSnackbar(),
+        closeDialog()]));
     });
   };
 }

@@ -1,4 +1,4 @@
-import headerReducer from './header'
+import headerReducer from './header';
 
 const rootReducer = headerReducer;
 

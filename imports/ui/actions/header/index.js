@@ -1,10 +1,13 @@
+/* eslint "import/no-unresolved": [ 2, { "ignore": ["^meteor/"] }] */
 import { Meteor } from 'meteor/meteor';
 import { TOGGLE_LEFT_NAV, CLOSE_LEFT_NAV, CLOSE_DIALOG, OPEN_DIALOG, SET_DIALOG_CONTENT,
   CLOSE_SNACKBAR, OPEN_SNACKBAR, SET_SNACKBAR_MESSAGE } from '../../constants/header';
+import { closePopOver } from '../../actions/header/authenticated-nav';
 
-export function isLoggedIn() {
-  return () => {
-    Boolean(Meteor.userId());
+export function handleLogout() {
+  return (dispatch) => {
+    Meteor.logout();
+    return dispatch(closePopOver());
   };
 }
 

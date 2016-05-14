@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { openPopOver, closePopOver, setAnchorEl }
   from '../../actions/header/authenticated-nav';
 import AuthenticatedNavigation from '../../components/header/authenticated_nav';
+import { batchActions } from 'redux-batched-actions';
 
 const mapStateToProps = (state) => (
   {
@@ -13,7 +14,7 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => (
   {
     onClickDropDown: (event) => {
-      dispatch([openPopOver(), setAnchorEl(event)]);
+      dispatch(batchActions([openPopOver(), setAnchorEl(event)]));
     },
     onRequestClose: () => {
       dispatch(closePopOver());

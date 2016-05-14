@@ -38,25 +38,28 @@ const arrDialogContent = {
   resetPwd: { node: <ResetPwd />, title: 'Reset Password' },
 };
 
-const Header = ({ isLoggedIn, openLeftNav, onToggleLeftNav, onCloseLeftNav,
+const Header = ({ openLeftNav, onToggleLeftNav, onCloseLeftNav,
   openDialog, onCloseDialog, dialogContent, openSnackbar, onCloseSnackbar,
-  snackbarMessage, showLoginDialog, handleLogout, firstName }) => (
+  snackbarMessage, showLoginDialog, handleLogout, userExists, firstName }) => (
   <div>
     <Toolbar>
       <ToolbarGroup float="left">
-        <FontIcon className="material-icons mobile-only"
+        <FontIcon
+          className="material-icons mobile-only"
           style={styles.menuIcon}
-          onTouchTap={onToggleLeftNav}
+          onClick={onToggleLeftNav}
         >
           menu
         </FontIcon>
         <a className="brand" href="/">
-            <ToolbarTitle text="Rent People" />
+          <ToolbarTitle text="Rent People" />
         </a>
       </ToolbarGroup>
       <ToolbarGroup className="desktop-only flex-container" lastChild float="right">
-        {isLoggedIn() ? <AuthenticatedNavigation onLogout={handleLogout} firstName={firstName} /> :
-          <PublicNavigation showLoginDialog={showLoginDialog} /> }
+        {userExists ? <AuthenticatedNavigation
+          onLogout={handleLogout}
+          firstName={firstName}
+        /> : <PublicNavigation showLoginDialog={showLoginDialog} />}
         <FlatButton label="Services" />
         <RaisedButton label="List your house" primary />
       </ToolbarGroup>
@@ -68,8 +71,10 @@ const Header = ({ isLoggedIn, openLeftNav, onToggleLeftNav, onCloseLeftNav,
       open={openLeftNav}
       onRequestChange={onCloseLeftNav}
     >
-      {isLoggedIn() ? <MobileAuthNavigation onLogout={handleLogout} firstName={firstName} /> :
-        <MobilePubNavigation /> }
+      {userExists ? <MobileAuthNavigation
+        onLogout={handleLogout}
+        firstName={firstName}
+      /> : <MobilePubNavigation showLoginDialog={showLoginDialog} />}
 
     </LeftNav>
 
@@ -96,7 +101,6 @@ const Header = ({ isLoggedIn, openLeftNav, onToggleLeftNav, onCloseLeftNav,
 );
 
 Header.propTypes = {
-  isLoggedIn: PropTypes.func.isRequired,
   openLeftNav: PropTypes.bool.isRequired,
   onToggleLeftNav: PropTypes.func.isRequired,
   onCloseLeftNav: PropTypes.func.isRequired,
@@ -109,6 +113,7 @@ Header.propTypes = {
   showLoginDialog: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
   firstName: PropTypes.string.isRequired,
+  userExists: PropTypes.bool.isRequired,
 };
 
 export default Header;

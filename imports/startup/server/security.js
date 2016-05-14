@@ -1,3 +1,4 @@
+/* eslint "import/no-unresolved": [ 2, { "ignore": ["^meteor/"] }] */
 import { Meteor } from 'meteor/meteor';
 import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
 import { _ } from 'meteor/underscore';

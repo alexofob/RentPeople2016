@@ -19,7 +19,7 @@ const Login = ({ onFacebookLogin, onSubmitLogin, onResetPwdClick, onSignUpClick 
       <span>or</span>
     </div>
 
-    <Form onValidSubmit={onSubmitLogin}>
+    <Form onValidSubmit={(data) => onSubmitLogin(data)}>
 
       <FormsyText
         name="email"

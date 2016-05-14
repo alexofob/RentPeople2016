@@ -5,8 +5,8 @@ import Login from '../../components/account/login.jsx';
 
 const mapDispatchToProps = (dispatch) => (
   {
-    onSubmitLogin: () => {
-      dispatch(submitLogin());
+    onSubmitLogin: (data) => {
+      dispatch(submitLogin(data));
     },
     onFacebookLogin: () => {
       dispatch(facebookLogin());

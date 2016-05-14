@@ -6,7 +6,7 @@ export const popOverState = (state = false, action) => {
     case OPEN_POP_OVER:
       return true;
     case CLOSE_POP_OVER:
-      return true;
+      return false;
     default:
       return state;
   }

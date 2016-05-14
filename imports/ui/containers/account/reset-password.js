@@ -4,8 +4,8 @@ import ResetPwd from '../../components/account/reset_pwd.jsx';
 
 const mapDispatchToProps = (dispatch) => (
   {
-    onSubmitResetPwd: () => {
-      dispatch(submitResetPwd());
+    onSubmitResetPwd: (data) => {
+      dispatch(submitResetPwd(data));
     },
   }
 );

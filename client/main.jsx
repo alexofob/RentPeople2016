@@ -1,8 +1,9 @@
-import React  from 'react';
-import ReactDOM  from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Meteor } from 'meteor/meteor';
 import { Provider } from 'react-redux';
 import Store from '../imports/ui/store';
-import routes from '../imports/startup/client/routes.jsx';
+// import routes from '../imports/startup/client/routes.jsx';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 
 // pages
@@ -28,7 +29,7 @@ function AppRoot() {
   );
 }
 
-Meteor.startup(()=> {
+Meteor.startup(() => {
   ReactDOM.render(
     <AppRoot />,
     document.getElementById('react-root')

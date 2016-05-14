@@ -5,8 +5,8 @@ import SignUp from '../../components/account/signup.jsx';
 
 const mapDispatchToProps = (dispatch) => (
   {
-    onSubmitSignUp: () => {
-      dispatch(submitSignUp());
+    onSubmitSignUp: (data) => {
+      dispatch(submitSignUp(data));
     },
     onFacebookSignUp: () => {
       dispatch(facebookLogin());

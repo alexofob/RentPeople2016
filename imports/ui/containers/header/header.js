@@ -1,9 +1,11 @@
+/* eslint "import/no-unresolved": [ 2, { "ignore": ["^meteor/"] }] */
 import { connect } from 'react-redux';
-import { isLoggedIn, toggleLeftNav, closeLeftNav, openDialog, setDialogContent,
-         closeDialog, closeSnackbar } from '../../actions/header';
+import { toggleLeftNav, closeLeftNav, openDialog, setDialogContent,
+         closeDialog, closeSnackbar, handleLogout } from '../../actions/header';
 import Header from '../../components/header/index.jsx';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import { batchActions } from 'redux-batched-actions';
 
 const mapStateToProps = (state) => (
   {
@@ -18,23 +20,18 @@ const mapStateToProps = (state) => (
 const HeaderContainer = createContainer(() => {
   const userSub = Meteor.subscribe('user');
   const loading = !userSub.ready();
-  const user = Meteor.user();
-  const userExists = !loading && !!user;
+  const userExists = Boolean(!loading && Meteor.user());
   return {
     loading,
-    user,
     userExists,
-    firstName: userExists ? user.name.FirstName : '',
+    firstName: userExists ? Meteor.user().name.firstName : '',
   };
 }, Header);
 
 const mapDispatchToProps = (dispatch) => (
   {
-    isLoggedIn: () => {
-      dispatch(isLoggedIn());
-    },
     handleLogout: () => {
-      dispatch(Meteor.logout);
+      dispatch(handleLogout());
     },
     onToggleLeftNav: () => {
       dispatch(toggleLeftNav());
@@ -49,8 +46,9 @@ const mapDispatchToProps = (dispatch) => (
       dispatch(closeSnackbar());
     },
     showLoginDialog: () => {
-      dispatch(([setDialogContent('login'), openDialog()]));
+      dispatch(batchActions([setDialogContent('login'), openDialog()]));
     },
+
   }
 );
 

@@ -15,9 +15,10 @@ const AuthenticatedNavigation = ({ openPopOver, anchorEl, onClickDropDown,
   firstName, onRequestClose, onLogout }) => (
   <div>
     <FlatButton
-      onTouchTap={onClickDropDown}
+      onTouchTap={(event) => onClickDropDown(event)}
       label={firstName}
       labelPosition="before"
+      leftIcon={<FontIcon className="material-icons">person</FontIcon>}
       icon={<FontIcon className="material-icons">arrow_drop_down</FontIcon>}
     />
     <Popover
@@ -26,27 +27,33 @@ const AuthenticatedNavigation = ({ openPopOver, anchorEl, onClickDropDown,
       anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
       targetOrigin={{ horizontal: 'left', vertical: 'top' }}
       onRequestClose={onRequestClose}
+      autoCloseWhenOffScreen
     >
       <div style={styles.popover}>
-        <MenuItem primaryText="My Dashboard" leftIcon={
-          <FontIcon className="material-icons">
+        <MenuItem
+          primaryText="My Dashboard" leftIcon={
+            <FontIcon className="material-icons">
             dashboard
-          </FontIcon>}
+            </FontIcon>}
         />
-        <MenuItem primaryText="My Listings" leftIcon={
-          <FontIcon className="material-icons">
-            list
-          </FontIcon>}
+        <MenuItem
+          primaryText="My Listings" leftIcon={
+            <FontIcon className="material-icons">
+              list
+            </FontIcon>}
         />
-        <MenuItem primaryText="My Reservations" leftIcon={
-          <FontIcon className="material-icons">store</FontIcon>}
+        <MenuItem
+          primaryText="My Reservations" leftIcon={
+            <FontIcon className="material-icons">store</FontIcon>}
         />
-        <MenuItem primaryText="Edit Profile" leftIcon={
-          <FontIcon className="material-icons">person</FontIcon>}
+        <MenuItem
+          primaryText="Edit Profile" leftIcon={
+            <FontIcon className="material-icons">person</FontIcon>}
         />
         <Divider />
-        <MenuItem primaryText="Log Out" leftIcon={
-          <FontIcon className="material-icons">arrow_back</FontIcon>}
+        <MenuItem
+          primaryText="Log Out" leftIcon={
+            <FontIcon className="material-icons">arrow_back</FontIcon>}
           onTouchTap={onLogout}
         />
       </div>
