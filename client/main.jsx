@@ -1,3 +1,4 @@
+/* eslint "import/no-unresolved": [ 2, { "ignore": ["^meteor/"] }] */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
@@ -9,20 +10,16 @@ import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 // pages
 import MainLayout from '../imports/ui/layouts/main-layout.jsx';
 import Home from '../imports/ui/components/home.jsx';
-import Login from '../imports/ui/containers/account/login';
-import SignUp from '../imports/ui/containers/account/signup';
-import ResetPwd from '../imports/ui/containers/account/reset-password';
+import ResetPwdFinal from '../imports/ui/containers/account/reset-password-final';
 
 
 function AppRoot() {
   return (
     <Provider store={Store}>
       <Router history={browserHistory}>
-        <Route path="/" component={ MainLayout }>
-          <IndexRoute component={ Home } />
-          <Route path="/login" component={ Login } />
-          <Route path="/signup" component={ SignUp } />
-          <Route path="/resetPassword" component={ ResetPwd } />
+        <Route path="/" component={MainLayout}>
+          <IndexRoute component={Home} />
+          <Route path="/reset-password/:token" component={ResetPwdFinal} />
         </Route>
       </Router>
     </Provider>

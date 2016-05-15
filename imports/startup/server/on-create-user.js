@@ -1,3 +1,4 @@
+/* eslint "import/no-unresolved": [ 2, { "ignore": ["^meteor/"] }] */
 import { Accounts } from 'meteor/accounts-base';
 import { check } from 'meteor/check';
 
