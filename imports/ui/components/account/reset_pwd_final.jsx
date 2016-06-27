@@ -1,10 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Form } from 'formsy-react';
-import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardHeader from 'material-ui/lib/card/card-header';
-import FlatButton from 'material-ui/lib/flat-button';
-import CardText from 'material-ui/lib/card/card-text';
+import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 import FormsyText from 'formsy-material-ui/lib/FormsyText';
 
 const styles = {
@@ -17,9 +14,7 @@ const styles = {
 const ResetPwdFinal = ({ onResetPwd }) => (
   <Form onValidSubmit={(data) => onResetPwd(data)}>
     <Card style={styles.card}>
-      <CardHeader
-        title="Reset Password"
-      />
+      <CardTitle title="Reset Password" />
       <CardText>
         <FormsyText
           name="password"
@@ -41,7 +36,7 @@ const ResetPwdFinal = ({ onResetPwd }) => (
       <CardActions>
         <FlatButton
           type="submit"
-          primary
+          secondary
           label="RESET PASSWORD"
         />
       </CardActions>

@@ -1,18 +1,16 @@
 import React, { PropTypes } from 'react';
 
-import FontIcon from 'material-ui/lib/font-icon';
-import RaisedButton from 'material-ui/lib/raised-button';
-import Toolbar from 'material-ui/lib/toolbar/toolbar';
-import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
-import ToolbarTitle from 'material-ui/lib/toolbar/toolbar-title';
-import FlatButton from 'material-ui/lib/flat-button';
-import LeftNav from 'material-ui/lib/left-nav';
-import Dialog from 'material-ui/lib/dialog';
-import Snackbar from 'material-ui/lib/snackbar';
+import FontIcon from 'material-ui/FontIcon';
+import RaisedButton from 'material-ui/RaisedButton';
+import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
+import FlatButton from 'material-ui/FlatButton';
+import Drawer from 'material-ui/Drawer';
+import Dialog from 'material-ui/Dialog';
+import Snackbar from 'material-ui/Snackbar';
 
 import Login from '../../containers/account/login';
 import SignUp from '../../containers/account/signup';
-import AuthenticatedNavigation from '../../containers/header/authenticated-nav';
+import AuthenticatedNavigation from './authenticated_nav.jsx';
 import PublicNavigation from './public_nav.jsx';
 import MobilePubNavigation from './mobile_pub_nav.jsx';
 import MobileAuthNavigation from './mobile_auth_nav.jsx';
@@ -38,7 +36,7 @@ const arrDialogContent = {
   resetPwd: { node: <ResetPwd />, title: 'Reset Password' },
 };
 
-const Header = ({ openLeftNav, onToggleLeftNav, onCloseLeftNav,
+const NavBar = ({ openLeftNav, onToggleLeftNav, onCloseLeftNav,
   openDialog, onCloseDialog, dialogContent, openSnackbar, onCloseSnackbar,
   snackbarMessage, showLoginDialog, handleLogout, userExists, firstName }) => (
   <div>
@@ -65,7 +63,7 @@ const Header = ({ openLeftNav, onToggleLeftNav, onCloseLeftNav,
       </ToolbarGroup>
     </Toolbar>
 
-    <LeftNav
+    <Drawer
       docked={false}
       width={250}
       open={openLeftNav}
@@ -76,7 +74,7 @@ const Header = ({ openLeftNav, onToggleLeftNav, onCloseLeftNav,
         firstName={firstName}
       /> : <MobilePubNavigation showLoginDialog={showLoginDialog} />}
 
-    </LeftNav>
+    </Drawer>
 
     <Dialog
       title={arrDialogContent[dialogContent].title}
@@ -100,7 +98,7 @@ const Header = ({ openLeftNav, onToggleLeftNav, onCloseLeftNav,
   </div>
 );
 
-Header.propTypes = {
+NavBar.propTypes = {
   openLeftNav: PropTypes.bool.isRequired,
   onToggleLeftNav: PropTypes.func.isRequired,
   onCloseLeftNav: PropTypes.func.isRequired,
@@ -116,4 +114,4 @@ Header.propTypes = {
   userExists: PropTypes.bool.isRequired,
 };
 
-export default Header;
+export default NavBar;

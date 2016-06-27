@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import FontIcon from 'material-ui/lib/font-icon';
+import MenuItem from 'material-ui/MenuItem';
+import FontIcon from 'material-ui/FontIcon';
 
 const MobilePubNavigation = ({ showLoginDialog }) => (
   <div>

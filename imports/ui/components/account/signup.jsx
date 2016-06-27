@@ -1,16 +1,26 @@
 import React, { PropTypes } from 'react';
 import { Form } from 'formsy-react';
-import RaisedButton from 'material-ui/lib/raised-button';
+import RaisedButton from 'material-ui/RaisedButton';
 import FormsyText from 'formsy-material-ui/lib/FormsyText';
-import Divider from 'material-ui/lib/divider';
+import Divider from 'material-ui/Divider';
+import FontIcon from 'material-ui/FontIcon';
+
+const styles = {
+  reduceSpace: {
+    marginTop: -20,
+  },
+  increaseSpace: {
+    marginTop: 10,
+  },
+};
 
 const SignUp = ({ onFacebookSignUp, onSubmitSignUp, onLoginClick }) => (
   <div>
     <RaisedButton
-      secondary
+      primary
       label="Sign up with Facebook"
-      icon={<i className="fa fa-facebook-official fa-inverse"></i>}
-      fullWidth
+      icon={<FontIcon className="material-icons">account_circle</FontIcon>}
+      style={{ width: '100%' }}
       onTouchTap={onFacebookSignUp}
     />
 
@@ -26,6 +36,8 @@ const SignUp = ({ onFacebookSignUp, onSubmitSignUp, onLoginClick }) => (
         validations="isAlphanumeric,minLength:2"
         validationError="This is not a valid name"
         floatingLabelText="First Name"
+        style={styles.reduceSpace}
+        fullWidth
       />
 
       <FormsyText
@@ -33,6 +45,8 @@ const SignUp = ({ onFacebookSignUp, onSubmitSignUp, onLoginClick }) => (
         validations="isAlphanumeric,isWords"
         validationError="This is not a valid name"
         floatingLabelText="Surname (optional)"
+        style={styles.reduceSpace}
+        fullWidth
       />
 
       <FormsyText
@@ -41,6 +55,8 @@ const SignUp = ({ onFacebookSignUp, onSubmitSignUp, onLoginClick }) => (
         validations="isEmail"
         validationError="This is not a valid email"
         floatingLabelText="Email Address"
+        style={styles.reduceSpace}
+        fullWidth
       />
 
       <FormsyText
@@ -50,6 +66,8 @@ const SignUp = ({ onFacebookSignUp, onSubmitSignUp, onLoginClick }) => (
         validationError="Password looks a bit short, try again"
         type="password"
         floatingLabelText="Password"
+        style={styles.reduceSpace}
+        fullWidth
       />
 
       <FormsyText
@@ -59,34 +77,32 @@ const SignUp = ({ onFacebookSignUp, onSubmitSignUp, onLoginClick }) => (
         validationError="Passwords do not match"
         type="password"
         floatingLabelText="Confirm Password"
+        style={styles.reduceSpace}
+        fullWidth
       />
 
-      <div className="login-item">
-        <RaisedButton
-          type="submit"
-          primary
-          label="SIGN UP"
-        />
+      <RaisedButton
+        type="submit"
+        secondary
+        label="SIGN UP"
+        style={styles.increaseSpace}
+      />
 
-      </div>
-
-      <p className="login-item">
+      <p >
         <small>
           By clicking Sign up, you agree to our <a href="#">Privacy Policy </a> and
           <a href="#"> Terms of Use</a>
         </small>
       </p>
 
-      <div className="login-item">
-        <Divider />
-      </div>
+      <Divider />
 
-      <div className="login-item">
+      <p>
         <small>
           If you already have an account,
           <a href="#" onClick={onLoginClick}> Log in</a>
         </small>
-      </div>
+      </p>
     </Form>
   </div>
 );

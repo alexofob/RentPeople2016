@@ -1,9 +1,27 @@
-import '/imports/startup/client';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Meteor } from 'meteor/meteor';
+import { Provider } from 'react-redux';
+import Store from '../imports/ui/store';
+import routes from '../imports/startup/client/routes.jsx';
+import { Router, browserHistory } from 'react-router';
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-// Needed for onTouchTap
-// Can go away when react 1.0 release
-// Check this repo:
-// https://github.com/zilverline/react-tap-event-plugin
-injectTapEventPlugin();
+function AppRoot() {
+  return (
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <Provider store={Store}>
+        <Router history={browserHistory} routes={routes} />
+      </Provider>
+    </MuiThemeProvider>
+  );
+}
+
+Meteor.startup(() => {
+  ReactDOM.render(
+    <AppRoot />,
+    document.getElementById('react-root')
+  );
+});

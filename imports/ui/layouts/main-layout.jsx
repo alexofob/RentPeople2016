@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Header from '/imports/ui/containers/header/header';
+import Header from '/imports/ui/containers/navbar/';
 import Footer from '/imports/ui/components/footer.jsx';
 
 const MainLayout = ({ children }) => (

@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { toggleLeftNav, closeLeftNav, openDialog, setDialogContent,
          closeDialog, closeSnackbar, handleLogout } from '../../actions/header';
-import Header from '../../components/header/index.jsx';
+import Header from '../../components/navbar/index.jsx';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { batchActions } from 'redux-batched-actions';

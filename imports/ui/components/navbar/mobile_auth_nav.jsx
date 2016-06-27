@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import FontIcon from 'material-ui/lib/font-icon';
-import Divider from 'material-ui/lib/divider';
+import MenuItem from 'material-ui/MenuItem';
+import Menu from 'material-ui/Menu';
+import FontIcon from 'material-ui/FontIcon';
+import Divider from 'material-ui/Divider';
 
 const MobileAuthNavigation = ({ firstName, onLogout }) => (
-  <div>
+  <Menu>
     <MenuItem
       primaryText={firstName}
       leftIcon={<FontIcon
@@ -39,7 +40,7 @@ const MobileAuthNavigation = ({ firstName, onLogout }) => (
       primaryText="Log Out" leftIcon={<FontIcon className="material-icons">
       arrow_back</FontIcon>} onTouchTap={onLogout}
     />
-  </div>
+  </Menu>
 );
 
 MobileAuthNavigation.propTypes = {

@@ -1,18 +1,25 @@
 import React, { PropTypes } from 'react';
 import { Form } from 'formsy-react';
-import RaisedButton from 'material-ui/lib/raised-button';
+import RaisedButton from 'material-ui/RaisedButton';
 import FormsyText from 'formsy-material-ui/lib/FormsyText';
-import Divider from 'material-ui/lib/divider';
+import Divider from 'material-ui/Divider';
+import FontIcon from 'material-ui/FontIcon';
+
+const styles = {
+  increaseSpace: {
+    marginTop: 10,
+  },
+};
 
 const Login = ({ onFacebookLogin, onSubmitLogin, onResetPwdClick, onSignUpClick }) => (
   <div>
 
     <RaisedButton
-      secondary
+      primary
       label="Log in with Facebook"
-      icon={<i className="fa fa-facebook-official fa-inverse"></i>}
-      fullWidth
+      icon={<FontIcon className="material-icons">account_circle</FontIcon>}
       onTouchTap={onFacebookLogin}
+      style={{ width: '100%' }}
     />
 
     <div className="separator">
@@ -27,6 +34,7 @@ const Login = ({ onFacebookLogin, onSubmitLogin, onResetPwdClick, onSignUpClick 
         validations="isEmail"
         validationError="This is not a valid email"
         floatingLabelText="Email Address"
+        fullWidth
       />
 
       <FormsyText
@@ -36,13 +44,14 @@ const Login = ({ onFacebookLogin, onSubmitLogin, onResetPwdClick, onSignUpClick 
         validationError="Password looks a bit short, try again"
         type="password"
         floatingLabelText="Password"
+        fullWidth
       />
 
-      <div className="login-item">
+      <div style={styles.increaseSpace}>
         <span>
           <RaisedButton
             type="submit"
-            primary
+            secondary
             label="LOG IN"
           />
         </span>
@@ -53,15 +62,13 @@ const Login = ({ onFacebookLogin, onSubmitLogin, onResetPwdClick, onSignUpClick 
         </span>
       </div>
 
-      <div className="login-item">
-        <Divider />
-      </div>
+      <Divider style={styles.increaseSpace} />
 
-      <div className="login-item">
+      <p>
         <small>
           Don't have an account? <a href="#" onClick={onSignUpClick}>Sign up</a>
         </small>
-      </div>
+      </p>
     </Form>
   </div>
 );
